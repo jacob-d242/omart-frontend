@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
@@ -25,14 +25,13 @@ import SellerScreen from './screens/SellerScreen';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
-import LoadingBox from './components/LoadingBox';
-import MessageBox from './components/MessageBox';
+
 import MapScreen from './screens/MapScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
 import ChatBox from './components/ChatBox';
 import Footer from './screens/Footer';
-import ImageSlider from './components/ImageSlider'
+
 import AboutUs from './components/AboutUs';
 import PrivacyPolicy from './components/PrivacyPolicy';
 
@@ -40,7 +39,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 
 function App() {
   const cart = useSelector((state) => state.cart);
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+ 
   const { cartItems } = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -49,12 +48,7 @@ function App() {
     dispatch(signout());
   };
   
-  const productCategoryList = useSelector((state) => state.productCategoryList);
-  const {
-    loading: loadingCategories,
-    error: errorCategories,
-    categories,
-  } = productCategoryList;
+ 
   useEffect(() => {
     dispatch(listProductCategories());
   }, [dispatch]);
@@ -63,20 +57,10 @@ function App() {
       <div className="grid-container">
         <header className="header">
         <div>
-            <div className="sidemenu">
-               <>
-                  <button
-                    type="button"
-                    className="open-sidebar"
-                      onClick={() => setSidebarIsOpen(true)}
-                      >
-                    <i className="fa fa-bars"></i>
-                    </button>
+            <div className="sidemenu">                 
                 <Link className="brand" to="/">
                   <img src="https://omart.huttech.co.ke/images/logo.png" alt="omart"width={ 139} height={32}/>
                 </Link>
-               </>
-
               </div>
             </div>
           <div>
@@ -160,7 +144,7 @@ function App() {
           </div>
         </header>
        {/*<div className="grid-container">*/}
-       
+{/*       
               <aside className={sidebarIsOpen ? 'open' : ''}>
                 <ul className="categories">
                   <li className="categoriestop">
@@ -190,7 +174,7 @@ function App() {
                     ))
                   )}
                 </ul>
-              </aside>
+              </aside>*/}
         
         <main>
           <Route path="/seller/:id" component={SellerScreen}></Route>
