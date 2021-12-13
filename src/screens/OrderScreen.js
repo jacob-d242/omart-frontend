@@ -34,7 +34,7 @@ export default function OrderScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
-      const { data } = await Axios.get('https://omartbackendapi.herokuapp.com/api/config/paypal');
+      const { data } = await Axios.get('/api/config/paypal');
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
@@ -85,11 +85,13 @@ export default function OrderScreen(props) {
               <div className="card card-body">
                 <h2>Shipping</h2>
                 <p>
-                  <strong>Name:</strong> {order.shippingAddress.fullName} <br />
+                  <strong>Name:</strong> 
+                  {order.shippingAddress.fullName} <br />
                   <strong>Address: </strong> {order.shippingAddress.address},
-                  {order.shippingAddress.city},{' '}
-                  {order.shippingAddress.postalCode},
-                  {order.shippingAddress.country}
+                      {order.shippingAddress.town},{' '}<br />
+                      <strong>Phone</strong>
+                  {order.shippingAddress.phoneNumber},
+                  {order.shippingAddress.county}
                 </p>
                 {order.isDelivered ? (
                   <MessageBox variant="success">

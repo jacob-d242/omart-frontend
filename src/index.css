@@ -6,6 +6,7 @@ body {
   margin: 0;
   height: 100vh;
   font-size: 1.6rem;
+  background-image: linear-gradient(to top, rgb(242, 255, 0), rgb(22, 236, 47), rgb(61, 206, 4));
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -158,7 +159,7 @@ a.brand {
   font-weight: bold;
 }
 .brand img{
-  overflow:hidden;
+ object-fit: cover;
   padding:0;
   margin:0;
   width: 100px !important;

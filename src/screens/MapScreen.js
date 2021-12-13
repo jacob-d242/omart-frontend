@@ -24,7 +24,7 @@ export default function MapScreen(props) {
 
   useEffect(() => {
     const fetch = async () => {
-      const { data } = await Axios('https://omartbackendapi.herokuapp.com/api/config/google');
+      const { data } = await Axios('/api/config/google');
       setGoogleApiKey(data);
       getUserCurrentLocation();
     };

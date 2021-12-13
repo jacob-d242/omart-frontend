@@ -19,9 +19,9 @@ export default function ShippingAddressScreen(props) {
   }
   const [fullName, setFullName] = useState(shippingAddress.fullName);
   const [address, setAddress] = useState(shippingAddress.address);
-  const [city, setCity] = useState(shippingAddress.city);
-  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-  const [country, setCountry] = useState(shippingAddress.country);
+  const [town, setTown] = useState(shippingAddress.town);
+  const [phoneNumber, setPhoneNumber] = useState(shippingAddress.phoneNumber);
+  const [county, setCounty] = useState(shippingAddress.county);
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
@@ -42,9 +42,9 @@ export default function ShippingAddressScreen(props) {
         saveShippingAddress({
           fullName,
           address,
-          city,
-          postalCode,
-          country,
+          town,
+          phoneNumber,
+          county,
           lat: newLat,
           lng: newLng,
         })
@@ -57,9 +57,9 @@ export default function ShippingAddressScreen(props) {
       saveShippingAddress({
         fullName,
         address,
-        city,
-        postalCode,
-        country,
+        town,
+        phoneNumber,
+        county,
         lat,
         lng,
       })
@@ -96,35 +96,35 @@ export default function ShippingAddressScreen(props) {
           ></input>
         </div>
         <div>
-          <label htmlFor="city">City</label>
+          <label htmlFor="town">Town</label>
           <input
             type="text"
-            id="city"
-            placeholder="Enter city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            id="town"
+            placeholder="Enter town"
+            value={town}
+            onChange={(e) => setTown(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="phoneNumber"> phone number</label>
           <input
             type="text"
-            id="postalCode"
-            placeholder="Enter postal code"
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
+            id="phoneNumber"
+            placeholder="Enter phone number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="country">County</label>
+          <label htmlFor="county">County</label>
           <input
             type="text"
-            id="country"
+            id="county"
             placeholder="Enter county"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
+            value={county}
+            onChange={(e) => setCounty(e.target.value)}
             required
           ></input>
         </div>
